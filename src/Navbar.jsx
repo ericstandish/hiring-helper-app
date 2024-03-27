@@ -12,6 +12,11 @@ function Navbar() {
             </Link>
           </li>
           <li>
+            <Link to="/ahpTool" className="text-white hover:text-gray-300">
+              AHP Tool
+            </Link>
+          </li>
+          <li>
             <Link to="/example" className="text-white hover:text-gray-300">
               Example
             </Link>

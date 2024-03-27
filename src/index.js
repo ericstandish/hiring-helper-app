@@ -13,6 +13,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="example" element={<LeaderExample />} />
+          <Route path="ahpTool" element={<ahpTool />} />
         </Route>
       </Routes>
     </BrowserRouter>

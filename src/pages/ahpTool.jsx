@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LeaderExample() {
+function ahpTool() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Choosing a Leader: AHP Process</h1>
@@ -95,4 +95,4 @@ Based on the AHP process, Dick emerges as the most suitable candidate with the h
 );
 }
 
-export default LeaderExample;
+export default ahpTool;
