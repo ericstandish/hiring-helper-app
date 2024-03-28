@@ -22,7 +22,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center saira-1">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <img src="/favicon.ico" alt="favicon" className="h-12 mr-4" />
+            <img src="/favicon.ico" alt="favicon" className="h-20 mr-24" />
           </Link>
           <ul className="flex space-x-4">
             <li>
