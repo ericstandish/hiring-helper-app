@@ -3,7 +3,7 @@ import React from 'react';
 function LeaderExample() {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-6 text-orange-500">Choosing a Leader: AHP Process</h1>
+      <h1 className="text-3xl font-bold mb-6 text-orange-500">Choosing a Leader: AHP Process</h1>
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Decision Scenario</h2>
         <p className="text-lg leading-relaxed">
