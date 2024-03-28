@@ -10,6 +10,7 @@ function LeaderExample() {
           The company, established in 1960, is undergoing a transition as its founder prepares to retire. A consulting firm has crafted a comprehensive plan to ensure the company's continued success in the absence of its founder. This plan necessitates the appointment of a new leader who will navigate the forthcoming changes and challenges.
         </p>
         <p>
+          f
           Six months ago, the board of directors identified four crucial criteria for selecting the new leader: experience, education, charisma, and age.
         </p>
       </section>
