@@ -150,7 +150,7 @@ const AhpTool = () => {
       {criteria.map((criterion, criterionIndex) => (
         <div className="mb-6" key={criterionIndex}>
           <h2 className="text-xl font-semibold mb-2">Pairwise Comparisons for {criterion}</h2>
-          <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none transform hover:scale-105" onClick={() => handleComparisonInput(criterionIndex)}>
+          <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 focus:outline-none transform hover:scale-105" onClick={() => handleComparisonInput(criterionIndex)}>
             Fill Pairwise Comparisons for {criterion}
           </button>
           {comparisonMatrices[criterionIndex] && (
