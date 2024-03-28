@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="bg-teal-500 p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center saira-1">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <img src="/favicon.ico" alt="Your Logo" className="h-8 mr-4" />
+            <img src="/favicon.ico" alt="favicon" className="h-8 mr-4" />
           </Link>
           <ul className="flex space-x-4">
             <li>
