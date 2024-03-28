@@ -128,7 +128,7 @@ const AhpTool = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Decision Making Using Analytic Hierarchy Process (AHP)</h1>
+      <h1 className="text-3xl font-bold mb-4 text-orange-500">Decision Making Using Analytic Hierarchy Process (AHP)</h1>
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Alternatives</h2>
         <ul>

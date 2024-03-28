@@ -3,7 +3,7 @@ import React from 'react';
 function Home() {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-orange-600">Analytic Hierarchy Process (AHP)</h1>
+      <h1 className="text-3xl font-bold mb-4 text-orange-500">Analytic Hierarchy Process (AHP)</h1>
       <section className="mb-8 bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold mb-2">What is AHP?</h2>
         <p className="text-gray-700">
