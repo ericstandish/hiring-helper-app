@@ -26,7 +26,7 @@ const calculatePriorities = (matrix) => {
 };
 
 const AhpTool = () => {
-  
+
   const [alternatives, setAlternatives] = useState([]);
   const [criteria, setCriteria] = useState([]);
   const [comparisonMatrices, setComparisonMatrices] = useState([]);
@@ -136,7 +136,7 @@ const AhpTool = () => {
             <li key={index}>{alternative}</li>
           ))}
         </ul>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddAlternative}>Add Alternative</button>
+        <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={handleAddAlternative}>Add Alternative</button>
       </div>
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Criteria</h2>
@@ -145,12 +145,12 @@ const AhpTool = () => {
             <li key={index}>{criterion}</li>
           ))}
         </ul>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddCriterion}>Add Criterion</button>
+        <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={handleAddCriterion}>Add Criterion</button>
       </div>
       {criteria.map((criterion, criterionIndex) => (
         <div className="mb-6" key={criterionIndex}>
           <h2 className="text-xl font-semibold mb-2">Pairwise Comparisons for {criterion}</h2>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleComparisonInput(criterionIndex)}>
+          <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none transform hover:scale-105" onClick={() => handleComparisonInput(criterionIndex)}>
             Fill Pairwise Comparisons for {criterion}
           </button>
           {comparisonMatrices[criterionIndex] && (
@@ -170,140 +170,140 @@ const AhpTool = () => {
                     {alternatives.map((alternative1, rowIndex) => (
                       <tr key={rowIndex}>
                         <td className="border border-gray-400 px-4 py-2">{alternative1}</td>
-{alternatives.map((alternative2, colIndex) => (
-  <td key={colIndex} className="border border-gray-400 px-4 py-2">
-    {comparisonMatrices[criterionIndex][rowIndex][colIndex]}
-  </td>
-))}
-</tr>
-))}
-</tbody>
-</table>
-</div>
-</div>
-)}
-{priorities[criterionIndex] && (
-<div className="mt-4">
-<h3 className="text-lg font-semibold mb-2">Priorities for {criterion}</h3>
-<div className="overflow-x-auto">
-<table className="w-full border-collapse border border-gray-400">
-<thead>
-<tr>
-<th className="border border-gray-400 px-4 py-2">Alternative</th>
-<th className="border border-gray-400 px-4 py-2">Priority</th>
-</tr>
-</thead>
-<tbody>
-{alternatives.map((alternative, index) => (
-<tr key={index}>
-<td className="border border-gray-400 px-4 py-2">{alternative}</td>
-<td className="border border-gray-400 px-4 py-2">{priorities[criterionIndex][index]}</td>
-</tr>
-))}
-</tbody>
-</table>
-</div>
-</div>
-)}
-</div>
-))}
-<div className="mb-6">
-<h2 className="text-xl font-semibold mb-2">Pairwise Comparisons for Criteria</h2>
-<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleCriterionComparisonInput}>
-Fill Pairwise Comparisons for Criteria
-</button>
-{criterionComparisonMatrix.length > 0 && (
-<div className="mt-4">
-<h3 className="text-lg font-semibold mb-2">Matrix for Criteria</h3>
-<div className="overflow-x-auto">
-<table className="w-full border-collapse border border-gray-400">
-<thead>
-<tr>
-<th className="border border-gray-400 px-4 py-2"></th>
-{criteria.map((criterion, index) => (
-<th key={index} className="border border-gray-400 px-4 py-2">{criterion}</th>
-))}
-</tr>
-</thead>
-<tbody>
-{criteria.map((criterion1, rowIndex) => (
-<tr key={rowIndex}>
-<td className="border border-gray-400 px-4 py-2">{criterion1}</td>
-{criteria.map((criterion2, colIndex) => (
-<td key={colIndex} className="border border-gray-400 px-4 py-2">
-  {criterionComparisonMatrix[0][rowIndex][colIndex]}
-</td>
-))}
-</tr>
-))}
-</tbody>
-</table>
-</div>
-</div>
-)}
-{criterionPriorities.length > 0 && (
-<div className="mt-4">
-<h3 className="text-lg font-semibold mb-2">Priorities for Criteria</h3>
-<div className="overflow-x-auto">
-<table className="w-full border-collapse border border-gray-400">
-<thead>
-<tr>
-<th className="border border-gray-400 px-4 py-2">Criterion</th>
-<th className="border border-gray-400 px-4 py-2">Priority</th>
-</tr>
-</thead>
-<tbody>
-{criteria.map((criterion, index) => (
-<tr key={index}>
-<td className="border border-gray-400 px-4 py-2">{criterion}</td>
-<td className="border border-gray-400 px-4 py-2">{criterionPriorities[index]}</td>
-</tr>
-))}
-</tbody>
-</table>
-</div>
-</div>
-)}
-</div>
-<div>
-<h2 className="text-xl font-semibold mb-2">Calculate Overall Priorities</h2>
-<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleCalculateOverallPriorities}>Calculate Overall Priorities</button>
-{overallPriorities.length > 0 && (
-<div className="mt-4">
-<h2 className="text-xl font-semibold mb-2">Overall Priorities</h2>
-<div className="overflow-x-auto">
-<table className="w-full border-collapse border border-gray-400">
-<thead>
-<tr>
-<th className="border border-gray-400 px-4 py-2">Alternative</th>
-<th className="border border-gray-400 px-4 py-2">Sum</th>
-<th className="border border-gray-400 px-4 py-2">Priority</th>
-</tr>
-</thead>
-<tbody>
-{alternatives.map((alternative, index) => (
-<tr key={index}>
-<td className="border border-gray-400 px-4 py-2">{alternative}</td>
-<td className="border border-gray-400 px-4 py-2">
-{criteria.map((criterion, criterionIndex) => (
-  <span key={criterionIndex}>
-    {priorities[criterionIndex][index]} *
-    {criterionPriorities[criterionIndex]}
-    {criterionIndex !== criteria.length - 1 ? " + " : " = "}
-  </span>
-))}
-</td>
-<td className="border border-gray-400 px-4 py-2">{overallPriorities[index]}</td>
-</tr>
-))}
-</tbody>
-</table>
-</div>
-</div>
-)}
-</div>
-</div>
-);
+                        {alternatives.map((alternative2, colIndex) => (
+                          <td key={colIndex} className="border border-gray-400 px-4 py-2">
+                            {comparisonMatrices[criterionIndex][rowIndex][colIndex]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {priorities[criterionIndex] && (
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-2">Priorities for {criterion}</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-400">
+                  <thead>
+                    <tr>
+                      <th className="border border-gray-400 px-4 py-2">Alternative</th>
+                      <th className="border border-gray-400 px-4 py-2">Priority</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {alternatives.map((alternative, index) => (
+                      <tr key={index}>
+                        <td className="border border-gray-400 px-4 py-2">{alternative}</td>
+                        <td className="border border-gray-400 px-4 py-2">{priorities[criterionIndex][index]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-2">Pairwise Comparisons for Criteria</h2>
+        <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={handleCriterionComparisonInput}>
+          Fill Pairwise Comparisons for Criteria
+        </button>
+        {criterionComparisonMatrix.length > 0 && (
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold mb-2">Matrix for Criteria</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-gray-400">
+                <thead>
+                  <tr>
+                    <th className="border border-gray-400 px-4 py-2"></th>
+                    {criteria.map((criterion, index) => (
+                      <th key={index} className="border border-gray-400 px-4 py-2">{criterion}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {criteria.map((criterion1, rowIndex) => (
+                    <tr key={rowIndex}>
+                      <td className="border border-gray-400 px-4 py-2">{criterion1}</td>
+                      {criteria.map((criterion2, colIndex) => (
+                        <td key={colIndex} className="border border-gray-400 px-4 py-2">
+                          {criterionComparisonMatrix[0][rowIndex][colIndex]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        {criterionPriorities.length > 0 && (
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold mb-2">Priorities for Criteria</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-gray-400">
+                <thead>
+                  <tr>
+                    <th className="border border-gray-400 px-4 py-2">Criterion</th>
+                    <th className="border border-gray-400 px-4 py-2">Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {criteria.map((criterion, index) => (
+                    <tr key={index}>
+                      <td className="border border-gray-400 px-4 py-2">{criterion}</td>
+                      <td className="border border-gray-400 px-4 py-2">{criterionPriorities[index]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+      <div>
+        <h2 className="text-xl font-semibold mb-2">Calculate Overall Priorities</h2>
+        <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={handleCalculateOverallPriorities}>Calculate Overall Priorities</button>
+        {overallPriorities.length > 0 && (
+          <div className="mt-4">
+            <h2 className="text-xl font-semibold mb-2">Overall Priorities</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-gray-400">
+                <thead>
+                  <tr>
+                    <th className="border border-gray-400 px-4 py-2">Alternative</th>
+                    <th className="border border-gray-400 px-4 py-2">Sum</th>
+                    <th className="border border-gray-400 px-4 py-2">Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {alternatives.map((alternative, index) => (
+                    <tr key={index}>
+                      <td className="border border-gray-400 px-4 py-2">{alternative}</td>
+                      <td className="border border-gray-400 px-4 py-2">
+                        {criteria.map((criterion, criterionIndex) => (
+                          <span key={criterionIndex}>
+                            {priorities[criterionIndex][index]} *
+                            {criterionPriorities[criterionIndex]}
+                            {criterionIndex !== criteria.length - 1 ? " + " : " = "}
+                          </span>
+                        ))}
+                      </td>
+                      <td className="border border-gray-400 px-4 py-2">{overallPriorities[index]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default AhpTool;

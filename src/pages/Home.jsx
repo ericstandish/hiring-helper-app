@@ -1,99 +1,67 @@
 import React from 'react';
 
-function LeaderExample() {
+function Home() {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Choosing a Leader: AHP Process</h1>
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-2">Decision Scenario</h2>
-        <p>
-          The company, established in 1960, is undergoing a transition as its founder prepares to retire. A consulting firm has crafted a comprehensive plan to ensure the company's continued success in the absence of its founder. This plan necessitates the appointment of a new leader who will navigate the forthcoming changes and challenges.
-        </p>
-        <p>
-          f
-          Six months ago, the board of directors identified four crucial criteria for selecting the new leader: experience, education, charisma, and age.
+      <h1 className="text-3xl font-bold mb-4 text-orange-600">Analytic Hierarchy Process (AHP)</h1>
+      <section className="mb-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold mb-2">What is AHP?</h2>
+        <p className="text-gray-700">
+          The Analytic Hierarchy Process (AHP) is a structured decision-making methodology developed by Thomas L. Saaty in the 1970s. It is designed to help individuals and organizations make complex decisions by breaking them down into smaller, more manageable parts.
         </p>
       </section>
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-2">Candidates</h2>
-        <table className="table-auto">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Candidate</th>
-              <th className="px-4 py-2">Age</th>
-              <th className="px-4 py-2">Experience</th>
-              <th className="px-4 py-2">Education</th>
-              <th className="px-4 py-2">Charisma</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border px-4 py-2">Tom</td>
-              <td className="border px-4 py-2">50</td>
-              <td className="border px-4 py-2">Moderate</td>
-              <td className="border px-4 py-2">Moderate</td>
-              <td className="border px-4 py-2">High</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2">Dick</td>
-              <td className="border px-4 py-2">60</td>
-              <td className="border px-4 py-2">Extensive</td>
-              <td className="border px-4 py-2">Extensive</td>
-              <td className="border px-4 py-2">Moderate</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2">Harry</td>
-              <td className="border px-4 py-2">30</td>
-              <td className="border px-4 py-2">Limited</td>
-              <td className="border px-4 py-2">Limited</td>
-              <td className="border px-4 py-2">Moderate</td>
-            </tr>
-          </tbody>
-        </table>
+      <section className="mb-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold mb-2">Importance of AHP</h2>
+        <p className="text-gray-700">
+          AHP is widely used in various fields, including business, engineering, healthcare, and public policy, due to its ability to handle multiple criteria and alternatives in decision-making. Its structured approach helps in prioritizing criteria and alternatives based on their relative importance, leading to more informed and rational decisions.
+        </p>
       </section>
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-2">Analytic Hierarchy Process (AHP)</h2>
-        <ol className="list-decimal pl-6">
+      <section className="mb-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold mb-2">How AHP Works</h2>
+        <p className="text-gray-700">
+          AHP involves the following key steps:
+        </p>
+        <ol className="list-decimal pl-6 text-gray-700">
           <li>
-            <h3 className="text-xl font-bold mb-2">Pairwise Comparisons of Candidates for Each Criterion</h3>
+            <h3 className="text-xl font-bold mb-2">Define Decision Criteria</h3>
             <p>
-              The board of directors conducts pairwise comparisons of each candidate for every criterion. For example, they compare Tom and Dick based on experience, Tom and Harry based on education, Dick and Harry based on charisma, and so on.
+              Identify and define the criteria that are important for making the decision. These criteria could include factors such as cost, time, quality, and risk.
             </p>
           </li>
           <li>
-            <h3 className="text-xl font-bold mb-2">Derivation of Priorities for Candidates Regarding Each Criterion</h3>
+            <h3 className="text-xl font-bold mb-2">Evaluate Alternatives</h3>
             <p>
-              After conducting pairwise comparisons, the board assigns relative weights to each candidate based on their performance in each criterion. They then calculate the priority of each candidate with respect to each criterion.
+              Identify the alternatives or options available for the decision and evaluate them against each criterion.
             </p>
           </li>
           <li>
-            <h3 className="text-xl font-bold mb-2">Pairwise Comparisons of Criteria for Their Importance</h3>
+            <h3 className="text-xl font-bold mb-2">Perform Pairwise Comparisons</h3>
             <p>
-              The board evaluates the importance of each criterion by conducting pairwise comparisons. They compare experience against education, experience against charisma, experience against age, education against charisma, and so on.
+              Conduct pairwise comparisons between criteria and alternatives to determine their relative importance or preference.
             </p>
           </li>
           <li>
-            <h3 className="text-xl font-bold mb-2">Derivation of Priorities for Criteria with Respect to the Goal</h3>
+            <h3 className="text-xl font-bold mb-2">Calculate Priorities</h3>
             <p>
-              Based on the pairwise comparisons, the board determines the relative importance of each criterion in achieving the overall goal of selecting the best leader. They calculate the priorities of criteria with respect to the goal.
+              Calculate the priorities of criteria and alternatives based on the pairwise comparison results.
             </p>
           </li>
           <li>
-            <h3 className="text-xl font-bold mb-2">Calculation of Final Priorities for Candidates with Respect to the Goal</h3>
+            <h3 className="text-xl font-bold mb-2">Make the Decision</h3>
             <p>
-              Using the priorities of candidates with respect to each criterion and the priorities of criteria with respect to the goal, the board calculates the final priorities of candidates with respect to the goal. The candidate with the highest priority
-              is selected as the most suitable leader.</p>
-</li>
-</ol>
-</section>
-<section className="mb-8">
-<h2 className="text-2xl font-bold mb-2">Decision</h2>
-<p>
-Based on the AHP process, Dick emerges as the most suitable candidate with the highest priority, followed by Tom and then Harry.
-</p>
-</section>
-</div>
-);
+              Use the calculated priorities to make the final decision. The alternative with the highest priority is typically selected as the best choice.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section className="mb-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold mb-2">Example</h2>
+        <p className="text-gray-700">
+          Consider a scenario where a company needs to choose a new leader. The company's board of directors evaluates candidates based on criteria such as experience, education, charisma, and age using the AHP process.
+        </p>
+      </section>
+    </div>
+  );
 }
 
-export default LeaderExample;
+export default Home;
