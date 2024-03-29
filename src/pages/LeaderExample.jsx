@@ -15,44 +15,46 @@ function LeaderExample() {
       </section>
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Candidates</h2>
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="px-4 py-2">Candidate</th>
-              <th className="px-4 py-2">Age</th>
-              <th className="px-4 py-2">Experience</th>
-              <th className="px-4 py-2">Education</th>
-              <th className="px-4 py-2">Charisma</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-gray-300">
-              <td className="px-4 py-2">Tom</td>
-              <td className="px-4 py-2">50</td>
-              <td className="px-4 py-2">Moderate</td>
-              <td className="px-4 py-2">Moderate</td>
-              <td className="px-4 py-2">High</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="px-4 py-2">Dick</td>
-              <td className="px-4 py-2">60</td>
-              <td className="px-4 py-2">Extensive</td>
-              <td className="px-4 py-2">Extensive</td>
-              <td className="px-4 py-2">Moderate</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="px-4 py-2">Harry</td>
-              <td className="px-4 py-2">30</td>
-              <td className="px-4 py-2">Limited</td>
-              <td className="px-4 py-2">Limited</td>
-              <td className="px-4 py-2">Moderate</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full md:w-auto border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="px-2 md:px-4 py-2">Candidate</th>
+                <th className="px-2 md:px-4 py-2">Age</th>
+                <th className="px-2 md:px-4 py-2">Experience</th>
+                <th className="px-2 md:px-4 py-2">Education</th>
+                <th className="px-2 md:px-4 py-2">Charisma</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-gray-300">
+                <td className="px-2 md:px-4 py-2">Tom</td>
+                <td className="px-2 md:px-4 py-2">50</td>
+                <td className="px-2 md:px-4 py-2">Moderate</td>
+                <td className="px-2 md:px-4 py-2">Moderate</td>
+                <td className="px-2 md:px-4 py-2">High</td>
+              </tr>
+              <tr className="border-b border-gray-300">
+                <td className="px-2 md:px-4 py-2">Dick</td>
+                <td className="px-2 md:px-4 py-2">60</td>
+                <td className="px-2 md:px-4 py-2">Extensive</td>
+                <td className="px-2 md:px-4 py-2">Extensive</td>
+                <td className="px-2 md:px-4 py-2">Moderate</td>
+              </tr>
+              <tr className="border-b border-gray-300">
+                <td className="px-2 md:px-4 py-2">Harry</td>
+                <td className="px-2 md:px-4 py-2">30</td>
+                <td className="px-2 md:px-4 py-2">Limited</td>
+                <td className="px-2 md:px-4 py-2">Limited</td>
+                <td className="px-2 md:px-4 py-2">Moderate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Analytic Hierarchy Process (AHP)</h2>
-        <ol className="list-decimal pl-6">
+        <ol className="list-decimal pl-4 md:pl-6">
           <li className="mb-4">
             <h3 className="text-lg font-semibold mb-2">Pairwise Comparisons of Candidates for Each Criterion</h3>
             <p className="text-lg leading-relaxed">
