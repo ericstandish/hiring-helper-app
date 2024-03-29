@@ -18,11 +18,11 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-10 ${scrollPosition > 0 ? "bg-teal-500 navbar-solid transition-all duration-300" : "bg-transparent navbar-transparent transition-all duration-300"} py-3`}>
+    <nav className={`fixed top-0 w-full z-10 ${scrollPosition > 0 ? "bg-teal-400 navbar-solid transition-all duration-300" : "bg-transparent navbar-transparent transition-all duration-300"} py-3`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center saira-1">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <img src="/favicon.ico" alt="favicon" className="h-20 mr-24" />
+            <img src="/favicon.ico" alt="favicon" className="h-12 md:h-20 mr-4 md:mr-24" /> {/* Adjusted height and margin for mobile view */}
           </Link>
           <ul className="flex space-x-4">
             <li>
