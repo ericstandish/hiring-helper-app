@@ -35,6 +35,48 @@ const AhpTool = () => {
   const [criterionPriorities, setCriterionPriorities] = useState([]);
   const [overallPriorities, setOverallPriorities] = useState([]);
 
+  // Function to export AHP tool state to JSON
+  const exportToJson = () => {
+    const exportData = {
+      alternatives,
+      criteria,
+      comparisonMatrices,
+      priorities,
+      criterionComparisonMatrix,
+      criterionPriorities,
+      overallPriorities
+    };
+
+    const json = JSON.stringify(exportData, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    // Trigger download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ahp_tool_data.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+  // Function to import AHP tool state from JSON
+  const importFromJson = (jsonData) => {
+    try {
+      const importedData = JSON.parse(jsonData);
+      setAlternatives(importedData.alternatives || []);
+      setCriteria(importedData.criteria || []);
+      setComparisonMatrices(importedData.comparisonMatrices || []);
+      setPriorities(importedData.priorities || []);
+      setCriterionComparisonMatrix(importedData.criterionComparisonMatrix || []);
+      setCriterionPriorities(importedData.criterionPriorities || []);
+      setOverallPriorities(importedData.overallPriorities || []);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+      // Handle error (e.g., display error message to the user)
+    }
+  };
+
   const handleAddAlternative = () => {
     const newAlternative = prompt('Enter alternative name:');
     if (newAlternative) {
@@ -60,7 +102,7 @@ const AhpTool = () => {
           inputValue = '1'; // Default to 1 if alternatives match
         } else {
           inputValue = prompt(
-            `Enter pairwise comparison value for ${alternatives[i]} and ${alternatives[j]} with respect to ${criteria[criterionIndex]}:`
+            `What is the importance of ${alternatives[i]} over ${alternatives[j]} with respect to ${criteria[criterionIndex]}:`
           );
         }
 
@@ -90,7 +132,7 @@ const AhpTool = () => {
           inputValue = '1'; // Default to 1 if criteria match
         } else {
           inputValue = prompt(
-            `Enter pairwise comparison value for ${criteria[i]} and ${criteria[j]}:`
+            `What is the importance of ${criteria[i]} over ${criteria[j]}:`
           );
         }
 
@@ -125,6 +167,7 @@ const AhpTool = () => {
     const calculatedOverallPriorities = calculateOverallPriorities();
     setOverallPriorities(calculatedOverallPriorities);
   };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -265,7 +308,7 @@ const AhpTool = () => {
           </div>
         )}
       </div>
-      <div>
+      <div className="mb-4">
         <h2 className="text-xl font-semibold mb-2">Calculate Overall Priorities</h2>
         <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={handleCalculateOverallPriorities}>Calculate Overall Priorities</button>
         {overallPriorities.length > 0 && (
@@ -301,6 +344,22 @@ const AhpTool = () => {
             </div>
           </div>
         )}
+      </div>
+      {/* Export button */}
+      <div className="mb-4">
+      <button className="px-4 py-2 rounded-lg bg-teal-500 text-white transition duration-300 ease-in-out hover:bg-orange-300 hover:text-white-500 focus:outline-none transform hover:scale-105" onClick={exportToJson}>Export to JSON</button>
+      </div>
+      {/* Import file input */}
+      <div className="mb-4">
+      <input type="file" onChange={(e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const jsonData = event.target.result;
+          importFromJson(jsonData);
+        };
+        reader.readAsText(file);
+      }} />
       </div>
     </div>
   );
