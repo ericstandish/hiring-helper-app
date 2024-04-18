@@ -21,7 +21,7 @@ const calculatePriorities = (matrix) => {
   // Normalize priorities
   const totalPriority = priorities.reduce((acc, val) => acc + val, 0);
   const normalizedPriorities = priorities.map((priority) => priority / totalPriority);
-
+  
   return normalizedPriorities.map(roundToThreeDecimals);
 };
 
@@ -34,6 +34,7 @@ const AhpTool = () => {
   const [criterionComparisonMatrix, setCriterionComparisonMatrix] = useState([]);
   const [criterionPriorities, setCriterionPriorities] = useState([]);
   const [overallPriorities, setOverallPriorities] = useState([]);
+  const [pairwiseComparisonsMade, setPairwiseComparisonsMade] = useState(false); // New state to track if pairwise comparisons have been made
 
   // Function to export AHP tool state to JSON
   const exportToJson = () => {
@@ -76,15 +77,23 @@ const AhpTool = () => {
       // Handle error (e.g., display error message to the user)
     }
   };
-
+  
   const handleAddAlternative = () => {
+    if (pairwiseComparisonsMade) {
+      alert("Pairwise comparisons have already been made. You cannot add more alternatives.");
+      return;
+    }
     const newAlternative = prompt('Enter alternative name:');
     if (newAlternative) {
       setAlternatives([...alternatives, newAlternative]);
     }
   };
-
+  
   const handleAddCriterion = () => {
+    if (pairwiseComparisonsMade) {
+      alert("Pairwise comparisons have already been made. You cannot add more criteria.");
+      return;
+    }
     const newCriterion = prompt('Enter criterion name:');
     if (newCriterion) {
       setCriteria([...criteria, newCriterion]);
@@ -92,12 +101,12 @@ const AhpTool = () => {
   };
   
   const handleComparisonInput = (criterionIndex) => {
-
+    
     if (alternatives.length < 3 || criteria.length < 3) {
       alert("Please add at least 3 alternatives and 3 criteria before performing pairwise comparisons.");
       return;
     }
-
+    
     const updatedMatrices = [...comparisonMatrices];
     const comparisonMatrix = alternatives.map(() => Array(alternatives.length).fill(0));
   
@@ -144,12 +153,14 @@ const AhpTool = () => {
       } else {
         setPriorities([...priorities, calculatedPriorities]);
       }
+    // Update pairwiseComparisonsMade state to true when pairwise comparisons are made
+    setPairwiseComparisonsMade(true);
   };
   
   const handleCriterionComparisonInput = () => {
-
-    if (criteria.length < 3) {
-      alert("Please add at least 3 criteria before performing pairwise comparisons.");
+    
+    if (alternatives.length < 3 || criteria.length < 3) {
+      alert("Please add at least 3 alternatives and 3 criteria before performing pairwise comparisons.");
       return;
     }
     
@@ -192,8 +203,12 @@ const AhpTool = () => {
   
     const calculatedPriorities = calculatePriorities(comparisonMatrix);
     setCriterionPriorities(calculatedPriorities);
-  };  
 
+    // Update pairwiseComparisonsMade state to true when pairwise comparisons are made
+    setPairwiseComparisonsMade(true);
+  };  
+  
+  
   const calculateOverallPriorities = () => {
     const overallPriorities = alternatives.map(() => 0);
 
@@ -205,8 +220,14 @@ const AhpTool = () => {
 
     return overallPriorities.map(roundToThreeDecimals);
   };
-
+  
   const handleCalculateOverallPriorities = () => {
+    // Check if pairwise comparisons for alternatives and criteria have been made
+    if (!pairwiseComparisonsMade || !criterionComparisonMatrix.length) {
+      alert("Please complete all pairwise comparisons before calculating overall priorities.");
+      return;
+    }
+  
     const calculatedOverallPriorities = calculateOverallPriorities();
     setOverallPriorities(calculatedOverallPriorities);
   };
