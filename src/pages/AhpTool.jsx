@@ -50,7 +50,7 @@ const AhpTool = () => {
     const json = JSON.stringify(exportData, null, 2);
     const blob = new Blob([json], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-
+    
     // Trigger download
     const a = document.createElement("a");
     a.href = url;
@@ -90,66 +90,97 @@ const AhpTool = () => {
       setCriteria([...criteria, newCriterion]);
     }
   };
-
+  
   const handleComparisonInput = (criterionIndex) => {
     const updatedMatrices = [...comparisonMatrices];
     const comparisonMatrix = alternatives.map(() => Array(alternatives.length).fill(0));
-
+  
     for (let i = 0; i < alternatives.length; i++) {
       for (let j = i; j < alternatives.length; j++) {
         let inputValue;
         if (i === j) {
           inputValue = '1'; // Default to 1 if alternatives match
         } else {
-          inputValue = prompt(
-            `What is the importance of ${alternatives[i]} over ${alternatives[j]} with respect to ${criteria[criterionIndex]}:`
-          );
+          do {
+            inputValue = prompt(
+              `What is the importance of ${alternatives[i]} over ${alternatives[j]} with respect to ${criteria[criterionIndex]} (0.01-9):
+              1: Both elements are equally important.
+              2-4: Low to moderate preference or importance.
+              5: Moderate preference or importance.
+              6-8: Strong to extreme preference or importance.
+              9: Extreme preference or importance. `
+            );
+  
+            if (inputValue === null) return; // If user cancels, exit the function
+  
+            const parsedValue = parseFloat(inputValue);
+            if (inputValue.trim() === '' || isNaN(parsedValue) || parsedValue < 0.11 || parsedValue > 9) {
+              alert("Invalid input. Please enter a number between 0.11 and 9.");
+            }
+          } while (inputValue.trim() === '' || isNaN(inputValue) || parseFloat(inputValue) < 0.11 || parseFloat(inputValue) > 9);
         }
-
-        if (inputValue !== null) {
-          const comparisonValue = parseFloat(inputValue);
-          comparisonMatrix[i][j] = comparisonValue;
-          comparisonMatrix[j][i] = 1 / comparisonValue;
-        }
+  
+        const comparisonValue = parseFloat(inputValue);
+        comparisonMatrix[i][j] = comparisonValue;
+        comparisonMatrix[j][i] = 1 / comparisonValue;
       }
     }
-
+  
     updatedMatrices[criterionIndex] = comparisonMatrix;
     setComparisonMatrices(updatedMatrices);
-
+  
     const calculatedPriorities = calculatePriorities(comparisonMatrix);
-    setPriorities([...priorities, calculatedPriorities]);
+      // Update existing priorities if already filled out before
+      if (priorities[criterionIndex]) {
+        const updatedPriorities = [...priorities];
+        updatedPriorities[criterionIndex] = calculatedPriorities;
+        setPriorities(updatedPriorities);
+      } else {
+        setPriorities([...priorities, calculatedPriorities]);
+      }
   };
-
+  
   const handleCriterionComparisonInput = () => {
     const updatedMatrix = [];
     const comparisonMatrix = criteria.map(() => Array(criteria.length).fill(0));
-
+  
     for (let i = 0; i < criteria.length; i++) {
       for (let j = i; j < criteria.length; j++) {
         let inputValue;
         if (i === j) {
           inputValue = '1'; // Default to 1 if criteria match
         } else {
-          inputValue = prompt(
-            `What is the importance of ${criteria[i]} over ${criteria[j]}:`
-          );
+          do {
+            inputValue = prompt(
+              `What is the importance of ${criteria[i]} over ${criteria[j]} (0.01-9):
+              1: Both elements are equally important.
+              2-4: Low to moderate preference or importance.
+              5: Moderate preference or importance.
+              6-8: Strong to extreme preference or importance.
+              9: Extreme preference or importance. `
+            );
+  
+            if (inputValue === null) return; // If user cancels, exit the function
+  
+            const parsedValue = parseFloat(inputValue);
+            if (inputValue.trim() === '' || isNaN(parsedValue) || parsedValue < 0.11 || parsedValue > 9) {
+              alert("Invalid input. Please enter a number between 0.11 and 9.");
+            }
+          } while (inputValue.trim() === '' || isNaN(inputValue) || parseFloat(inputValue) < 0.11 || parseFloat(inputValue) > 9);
         }
-
-        if (inputValue !== null) {
-          const comparisonValue = parseFloat(inputValue);
-          comparisonMatrix[i][j] = comparisonValue;
-          comparisonMatrix[j][i] = 1 / comparisonValue;
-        }
+  
+        const comparisonValue = parseFloat(inputValue);
+        comparisonMatrix[i][j] = comparisonValue;
+        comparisonMatrix[j][i] = 1 / comparisonValue;
       }
     }
-
+  
     updatedMatrix.push(comparisonMatrix);
     setCriterionComparisonMatrix(updatedMatrix);
-
+  
     const calculatedPriorities = calculatePriorities(comparisonMatrix);
     setCriterionPriorities(calculatedPriorities);
-  };
+  };  
 
   const calculateOverallPriorities = () => {
     const overallPriorities = alternatives.map(() => 0);
