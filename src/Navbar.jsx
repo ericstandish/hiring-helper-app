@@ -57,11 +57,6 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div>
-          <button className="px-2 py-1 md:px-4 md:py-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition duration-300 ease-in-out focus:outline-none text-sm md:text-base"> {/* Adjusted padding and font size */}
-            Sign In
-          </button>
-        </div>
       </div>
     </nav>
   );

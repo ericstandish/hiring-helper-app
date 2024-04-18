@@ -92,6 +92,12 @@ const AhpTool = () => {
   };
   
   const handleComparisonInput = (criterionIndex) => {
+
+    if (alternatives.length < 3 || criteria.length < 3) {
+      alert("Please add at least 3 alternatives and 3 criteria before performing pairwise comparisons.");
+      return;
+    }
+
     const updatedMatrices = [...comparisonMatrices];
     const comparisonMatrix = alternatives.map(() => Array(alternatives.length).fill(0));
   
@@ -141,6 +147,12 @@ const AhpTool = () => {
   };
   
   const handleCriterionComparisonInput = () => {
+
+    if (criteria.length < 3) {
+      alert("Please add at least 3 criteria before performing pairwise comparisons.");
+      return;
+    }
+    
     const updatedMatrix = [];
     const comparisonMatrix = criteria.map(() => Array(criteria.length).fill(0));
   
